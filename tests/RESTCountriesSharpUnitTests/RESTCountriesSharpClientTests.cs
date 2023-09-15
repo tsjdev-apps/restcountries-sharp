@@ -6,11 +6,11 @@ namespace RESTCountriesSharpUnitTests;
 
 public class RESTCountriesSharpClientTests
 {
-    private readonly RESTCountriesSharpService _service;
+    private readonly RESTCountriesService _service;
 
     public RESTCountriesSharpClientTests()
     {
-        _service = new RESTCountriesSharpService();
+        _service = new RESTCountriesService();
     }
 
     [Fact]

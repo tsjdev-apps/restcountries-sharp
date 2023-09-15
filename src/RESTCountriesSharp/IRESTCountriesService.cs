@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace RESTCountriesSharp
 {
-    public interface IRESTCountriesSharpService
+    public interface IRESTCountriesService
     {
         /// <summary>
         ///     Get all countries.

@@ -2,7 +2,7 @@
 using RESTCountriesSharp.Models;
 using Spectre.Console;
 
-RESTCountriesSharpService restCountriesSharp = new();
+RESTCountriesService restCountriesSharp = new();
 
 AnsiConsole.Write(new FigletText("RESTCountries Sharp").LeftJustified().Color(Color.Red));
 

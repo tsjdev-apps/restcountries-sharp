@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RESTCountriesSharp
 {
-    public class RESTCountriesSharpService : IRESTCountriesSharpService
+    public class RESTCountriesService : IRESTCountriesService
     {
         private HttpClient _httpClient;
 
