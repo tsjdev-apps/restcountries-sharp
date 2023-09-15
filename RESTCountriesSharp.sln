@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02_tests", "02_tests", "{42
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RESTCountriesSharpConsole", "samples\RESTCountriesSharpConsole\RESTCountriesSharpConsole.csproj", "{05CAF28D-ADAD-4CB7-BE20-D8546CFF1B4C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03_samples", "03_samples", "{CCBD1536-661E-4230-A4E5-BEE934C5182B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{40EA674A-5D1C-45D9-B0FA-941E8F0FE06F} = {D99D8519-625F-4936-B1A6-A06722FC9A3A}
 		{1EE29969-D73F-4618-971E-C867B2A3E100} = {42EF945B-0DD9-4F23-ADB4-813336DD35A3}
+		{05CAF28D-ADAD-4CB7-BE20-D8546CFF1B4C} = {CCBD1536-661E-4230-A4E5-BEE934C5182B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0BAA4030-0741-411E-BBE7-091841126D35}
