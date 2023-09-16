@@ -1,0 +1,252 @@
+{
+	"info": {
+		"_postman_id": "83801d28-e44b-4ee5-8195-9323006993d8",
+		"name": "RESTCountries.com",
+		"description": "**Get information about countries via a RESTful API**  \nThe project is inspired on restcountries.eu by Fayder Florez. Although the original project has now moved to a subscription base API, this project is still Open Source and Free to use.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "359194"
+	},
+	"item": [
+		{
+			"name": "01 - ALL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restcountries.com/v3.1/all",
+					"protocol": "https",
+					"host": [
+						"restcountries",
+						"com"
+					],
+					"path": [
+						"v3.1",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "02 - NAME",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restcountries.com/v3.1/name/deutschland",
+					"protocol": "https",
+					"host": [
+						"restcountries",
+						"com"
+					],
+					"path": [
+						"v3.1",
+						"name",
+						"deutschland"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "03 - FULL NAME",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restcountries.com/v3.1/name/germany?fullText=true",
+					"protocol": "https",
+					"host": [
+						"restcountries",
+						"com"
+					],
+					"path": [
+						"v3.1",
+						"name",
+						"germany"
+					],
+					"query": [
+						{
+							"key": "fullText",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "04 - CODE",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restcountries.com/v3.1/alpha/deu",
+					"protocol": "https",
+					"host": [
+						"restcountries",
+						"com"
+					],
+					"path": [
+						"v3.1",
+						"alpha",
+						"deu"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "05 - LIST OF CODES",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restcountries.com/v3.1/alpha?codes=170,no,est,pe",
+					"protocol": "https",
+					"host": [
+						"restcountries",
+						"com"
+					],
+					"path": [
+						"v3.1",
+						"alpha"
+					],
+					"query": [
+						{
+							"key": "codes",
+							"value": "170,no,est,pe"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "06 - CURRENCY",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restcountries.com/v3.1/currency/euro",
+					"protocol": "https",
+					"host": [
+						"restcountries",
+						"com"
+					],
+					"path": [
+						"v3.1",
+						"currency",
+						"euro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "07 - LANGUAGE",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restcountries.com/v3.1/lang/spanish",
+					"protocol": "https",
+					"host": [
+						"restcountries",
+						"com"
+					],
+					"path": [
+						"v3.1",
+						"lang",
+						"spanish"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "08 - CAPITAL CITY",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restcountries.com/v3.1/capital/berlin",
+					"protocol": "https",
+					"host": [
+						"restcountries",
+						"com"
+					],
+					"path": [
+						"v3.1",
+						"capital",
+						"berlin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "09 - REGION",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restcountries.com/v3.1/region/europe",
+					"protocol": "https",
+					"host": [
+						"restcountries",
+						"com"
+					],
+					"path": [
+						"v3.1",
+						"region",
+						"europe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "10 - SUBREGIONS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restcountries.com/v3.1/subregion/Northern%20Europe",
+					"protocol": "https",
+					"host": [
+						"restcountries",
+						"com"
+					],
+					"path": [
+						"v3.1",
+						"subregion",
+						"Northern%20Europe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "11 - TRANSLATION",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restcountries.com/v3.1/translation/alemania",
+					"protocol": "https",
+					"host": [
+						"restcountries",
+						"com"
+					],
+					"path": [
+						"v3.1",
+						"translation",
+						"alemania"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
