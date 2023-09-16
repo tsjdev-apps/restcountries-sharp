@@ -74,6 +74,8 @@ Here is a screenshot of the `Console Application` using the [NuGet package](http
 
 ![RESTCountriesSharpSample](https://raw.githubusercontent.com/tsjdev-apps/restcountries-sharp/main/docs/sample-console.png)
 
+There is also a [Postman](https://www.postman.com/) collection located in the [*Samples*](./samples/) folder. This collection contains all the different endpoints of the API and all the calls are also possible to do with the `RESTCountriesService`.
+
 ## Buy Me A Coffee
 
 I appreciate any form of support to keep my _Open Source_ activities going.
