@@ -4,7 +4,7 @@
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<Title>RESTCountriesSharp</Title>
-		<Version>1.0.0</Version>
+		<Version>1.0.1</Version>
 		<Authors>Thomas Sebastian Jensen</Authors>
 		<Company>tsjdev-apps.de</Company>
 		<Description>An unofficial .NET API wrapper for RESTCountries.com</Description>
@@ -12,6 +12,7 @@
 		<PackageProjectUrl>https://github.com/tsjdev-apps/restcountries-sharp</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/tsjdev-apps/restcountries-sharp</RepositoryUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageIcon>icon.png</PackageIcon>
 		<PackageTags>RESTCountries.com; Api; Wrapper; Countries, free</PackageTags>
 		<PackageReleaseNotes>
 			- First Release
@@ -21,6 +22,10 @@
 
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="icon.png" Pack="true" PackagePath=""/>
 	</ItemGroup>
 
 </Project>
