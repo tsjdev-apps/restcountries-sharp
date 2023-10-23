@@ -1,130 +1,76 @@
-﻿using Newtonsoft.Json;
+﻿using Refit;
+using RESTCountriesSharp.Clients;
 using RESTCountriesSharp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace RESTCountriesSharp
 {
     public class RESTCountriesService : IRESTCountriesService
     {
-        private HttpClient _httpClient;
+        private readonly IRESTCountriesClient _restCountriesClient;
 
-        public async Task<IEnumerable<Country>> GetAllCountriesAsync()
+        public RESTCountriesService()
         {
-            string endpoint = "all";
-
-            IEnumerable<Country> countries = await GetCountriesListAsync(endpoint);
-            return countries;
-        }
-
-        public async Task<IEnumerable<Country>> GetCountriesByNameAsync(string name)
-        {
-            string endpoint = $"name/{name}";
-
-            IEnumerable<Country> countries = await GetCountriesListAsync(endpoint);
-            return countries;
+            _restCountriesClient = RestService.For<IRESTCountriesClient>("https://restcountries.com/v3.1", new RefitSettings { ContentSerializer = new NewtonsoftJsonContentSerializer() });
         }
 
         public async Task<Country> GetCountryByFullNameAsync(string fullName)
         {
-            string endpoint = $"name/{fullName}?fullText=true";
+            IEnumerable<Country> countries = await RunAndHandleErrorAsync(async () =>
+            {
+                return await _restCountriesClient.GetCountriesByFullNameAsync(fullName);
+            });
 
-            IEnumerable<Country> countries = await GetCountriesListAsync(endpoint);
-            return countries.FirstOrDefault();
+            return countries?.FirstOrDefault();
         }
 
         public async Task<Country> GetCountryByCodeAsync(string code)
         {
-            string endpoint = $"alpha/{code}";
+            IEnumerable<Country> countries = await RunAndHandleErrorAsync(async () =>
+            {
+                return await _restCountriesClient.GetCountriesByCodeAsync(code);
+            });
 
-            IEnumerable<Country> countries = await GetCountriesListAsync(endpoint);
-            return countries.FirstOrDefault();
+            return countries?.FirstOrDefault();
         }
 
-        public async Task<IEnumerable<Country>> GetCountriesByCodesAsync(IEnumerable<string> codes)
-        {
-            string endpoint = $"alpha?codes={string.Join(",", codes)}";
+        public Task<IEnumerable<Country>> GetAllCountriesAsync()
+            => RunAndHandleErrorAsync(async () => await _restCountriesClient.GetAllCountriesAsync());
 
-            IEnumerable<Country> countries = await GetCountriesListAsync(endpoint);
-            return countries;
-        }
+        public Task<IEnumerable<Country>> GetCountriesByNameAsync(string name)
+            => RunAndHandleErrorAsync(async () => await _restCountriesClient.GetCountriesByNameAsync(name));
+
+        public Task<IEnumerable<Country>> GetCountriesByCodesAsync(IEnumerable<string> codes)
+            => RunAndHandleErrorAsync(async () => await _restCountriesClient.GetCountriesByCodesAsync(string.Join(",", codes)));
 
         public async Task<IEnumerable<Country>> GetCountriesByCurrencyAsync(string currency)
-        {
-            string endpoint = $"currency/{currency}";
+            => await RunAndHandleErrorAsync(async () => await _restCountriesClient.GetCountriesByCurrencyAsync(currency));
 
-            IEnumerable<Country> countries = await GetCountriesListAsync(endpoint);
-            return countries;
-        }
+        public async Task<IEnumerable<Country>> GetCountriesByLanguageAsync(string language) 
+            => await RunAndHandleErrorAsync(async () => await _restCountriesClient.GetCountriesByLanguageAsync(language));
 
-        public async Task<IEnumerable<Country>> GetCountriesByLanguageAsync(string language)
-        {
-            string endpoint = $"lang/{language}";
+        public async Task<IEnumerable<Country>> GetCountriesByCapitalAsync(string capital) 
+            => await RunAndHandleErrorAsync(async () => await _restCountriesClient.GetCountriesByCapitalAsync(capital));
 
-            IEnumerable<Country> countries = await GetCountriesListAsync(endpoint);
-            return countries;
-        }
+        public async Task<IEnumerable<Country>> GetCountriesByRegionAsync(string region) 
+            => await RunAndHandleErrorAsync(async () => await _restCountriesClient.GetCountriesByRegionAsync(region));
 
-        public async Task<IEnumerable<Country>> GetCountriesByCapitalAsync(string capital)
-        {
-            string endpoint = $"capital/{capital}";
+        public async Task<IEnumerable<Country>> GetCountriesBySubregionAsync(string subregion) 
+            => await RunAndHandleErrorAsync(async () => await _restCountriesClient.GetCountriesBySubregionAsync(subregion));
 
-            IEnumerable<Country> countries = await GetCountriesListAsync(endpoint);
-            return countries;
-        }
-
-        public async Task<IEnumerable<Country>> GetCountriesByRegionAsync(string region)
-        {
-            string endpoint = $"region/{region}";
-
-            IEnumerable<Country> countries = await GetCountriesListAsync(endpoint);
-            return countries;
-        }
-
-        public async Task<IEnumerable<Country>> GetCountriesBySubregionAsync(string subregion)
-        {
-            string endpoint = $"subregion/{subregion.Replace(" ", "%20")}";
-
-            IEnumerable<Country> countries = await GetCountriesListAsync(endpoint);
-            return countries;
-        }
-
-        private async Task<IEnumerable<Country>> GetCountriesListAsync(string endpoint)
+        private async Task<IEnumerable<Country>> RunAndHandleErrorAsync(Func<Task<IEnumerable<Country>>> func)
         {
             try
             {
-                HttpClient client = GetHttpClient();
-
-                HttpResponseMessage responseMessage = await client.GetAsync(endpoint);
-                responseMessage.EnsureSuccessStatusCode();
-
-                string body = await responseMessage.Content.ReadAsStringAsync();
-
-                IEnumerable<Country> countries = JsonConvert.DeserializeObject<IEnumerable<Country>>(body);
-                return countries;
+                return await func();
             }
             catch
             {
                 return Enumerable.Empty<Country>();
             }
-        }
-
-        private HttpClient GetHttpClient()
-        {
-            if (_httpClient != null)
-            {
-                return _httpClient;
-            }
-
-            _httpClient = new HttpClient
-            {
-                BaseAddress = new Uri("https://restcountries.com/v3.1/")
-            };
-
-            return _httpClient;
         }
     }
 }
