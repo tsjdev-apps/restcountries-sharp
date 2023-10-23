@@ -4,7 +4,7 @@
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<Title>RESTCountriesSharp</Title>
-		<Version>1.0.1</Version>
+		<Version>1.1.0</Version>
 		<Authors>Thomas Sebastian Jensen</Authors>
 		<Company>tsjdev-apps.de</Company>
 		<Description>An unofficial .NET API wrapper for RESTCountries.com</Description>
@@ -15,7 +15,7 @@
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageTags>RESTCountries.com; Api; Wrapper; Countries, free</PackageTags>
 		<PackageReleaseNotes>
-			- First Release
+			- Use REFIT for easier API requests
 		</PackageReleaseNotes>
 		<NeutralLanguage>en</NeutralLanguage>
 	</PropertyGroup>
